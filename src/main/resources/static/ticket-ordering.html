@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordering ticket</title>
+    <script src="ordering.js"></script>
+</head>
+<body>
+<h1>Ordering of tickets</h1>
+<form>
+
+
+
+</form>
+
+
+
+
+
+
+<table>
+    <tr>
+        <td>
+            Select movie:
+        </td>
+        <td>
+            <select id="movie">
+                <option>Select a movie</option>
+                <option>Napoleon</option>
+                <option>Birdman</option>
+                <option>Max Manus</option>
+            </select> <span id="movieCheck"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Number of tickets</td>
+        <td><input size="1" maxlength="3" value="0" type="text" id="ticketNr"> <span id="ticketNrCheck"></span></td>
+    </tr>
+    <tr>
+        <td>First Name</td>
+        <td><input type="text" id="fName" oninput="checkFName()"> <span id="fNameCheck"></span></td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td><input type="text" id="lName"> <span id="lNameCheck"></span></td>
+    </tr>
+    <tr>
+        <td>Phone number</td>
+        <td><input type="text" id="phoneNr"> <span id="phoneNrCheck"></span></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><input type="email" id="email"> <span id="emailCheck"></span></td>
+    </tr>
+</table>
+<button onclick="buyTicket()">Buy ticket</button>
+
+<h2>All tickets</h2>
+<div id="all tickets"></div>
+<button>Delete all tickets</button>
+</body>
+</html>
