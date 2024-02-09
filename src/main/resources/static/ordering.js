@@ -10,6 +10,7 @@ function buyTicket(){
     const phoneNr = document.getElementById("phoneNr").value;
     const email = document.getElementById("email").value;
 
+
     //Resetting the error messages
     document.getElementById("movieCheck").innerText = "";
     document.getElementById("ticketNrCheck").innerText = "";
@@ -17,6 +18,7 @@ function buyTicket(){
     document.getElementById("lNameCheck").innerText = "";
     document.getElementById("phoneNrCheck").innerText = "";
     document.getElementById("emailCheck").innerText = "";
+
 
     //Long validation of all inputs :(
     if (movie === "Select a movie"){
@@ -69,6 +71,8 @@ function buyTicket(){
         phoneNumber : phoneNr,
         email : email
     }
+
+    //Going over the "PERFECT" validation array to check for errors
     for (let i = 0; i < validation.length; i++){
         if (validation[i] === false){
             reset();
