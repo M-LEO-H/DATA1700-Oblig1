@@ -18,48 +18,48 @@ function buyTicket(){
     document.getElementById("lNameCheck").innerText = "";
     document.getElementById("phoneNrCheck").innerText = "";
     document.getElementById("emailCheck").innerText = "";
+    let valid = true;
 
 
     //Long validation of all inputs :(
-    if (movie === "Select a movie"){
+    if (movie === "Select a movie") {
         document.getElementById("movieCheck").innerText = "Select a movie";
         document.getElementById("movie").value = "Select a movie";
-        validation.push(false);
-    }else validation.push(true);
+        valid = false;
+    }
 
     if (isNaN(ticketNumber) ){
         document.getElementById("ticketNrCheck").innerText = "Number of tickets is invalid";
         document.getElementById("ticketNr").value = "0";
-        validation.push(false);
+        valid = false;
     }else if(!Number.isInteger(ticketNumber) || ticketNumber <= 0){
         document.getElementById("ticketNrCheck").innerText = "Number of tickets is to small or not a whole number";
         document.getElementById("ticketNr").value = "0";
-        validation.push(false);
-    }else validation.push(true);
+        valid = false;
+    }
 
     if (fName === ""){
         document.getElementById("fNameCheck").innerText = "First name cannot be empty";
         document.getElementById("fName").value = "";
-        validation.push(false);
-    }else validation.push(true);
+        valid = false;
+    }
 
     if (lName === ""){
         document.getElementById("lNameCheck").innerText = "Last name cannot be empty";
         document.getElementById("lName").value = "";
-        validation.push(false);
-    }else validation.push(true);
+        valid = false;
+    }
 
     if (phoneNr === ""){
         document.getElementById("phoneNrCheck").innerText = "Phone number cannot be empty";
         document.getElementById("phoneNr").value = "";
-        validation.push(false);
-    }else validation.push(true);
-
+        valid = false;
+    }
     if (email === "" || !email.includes("@")){
         document.getElementById("emailCheck").innerText = "Email cannot be empty and/or are not valid";
         document.getElementById("email").value = "";
-        validation.push(false);
-    }else validation.push(true);
+        valid = false;
+    }
 
 
 
@@ -72,17 +72,15 @@ function buyTicket(){
         email : email
     }
 
-    //Going over the "PERFECT" validation array to check for errors
-    for (let i = 0; i < validation.length; i++){
-        if (validation[i] === false){
-            reset();
-            validation.splice(0, validation.length);
-            return;
-        }
+    reset();
+    if (valid === true){
+        purchases.push(purchase);
+    }else{
+        return;
     }
 
-    reset();
-    purchases.push(purchase);
+
+
 
     //Printing out the tickets in Purchases
     let ut = "<table><tr>" +
