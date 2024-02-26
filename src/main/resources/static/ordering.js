@@ -1,14 +1,27 @@
 let purchases = [];
-let validation = [];
 
 
 function buyTicket(){
+    //Variables
     const movie = document.getElementById("movie").value;
     const ticketNumber = Number(document.getElementById("ticketNr").value);
-    const fName = document.getElementById("fName").value;
-    const lName = document.getElementById("lName").value;
+    const fName = document.getElementById("fName").value.toLowerCase();
+    const lName = document.getElementById("lName").value.toLowerCase();
     const phoneNr = document.getElementById("phoneNr").value;
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value.toLowerCase();
+
+
+
+    /*Regex consts. patterns gotten from this youtube video by Net Ninja
+    https://www.youtube.com/watch?v=QxjAOSUQjP0
+    If you wanted a more comprehensive pattern you could use this one regexr.com/2rhq7 from the
+    community user Tripleaxis
+    */
+    const namePattern = /^[a-z]+$/g
+    const phonePattern = /^\d{8}$/g
+    const emailPattern = /^([a-z\d-_]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/g
+
+
 
 
     //Resetting the error messages
@@ -32,30 +45,30 @@ function buyTicket(){
         document.getElementById("ticketNrCheck").innerText = "Number of tickets is invalid";
         document.getElementById("ticketNr").value = "0";
         valid = false;
-    }else if(!Number.isInteger(ticketNumber) || ticketNumber <= 0){
-        document.getElementById("ticketNrCheck").innerText = "Number of tickets is to small or not a whole number";
+    }else if(!Number.isInteger(ticketNumber) || ticketNumber <= 0 || ticketNumber > 50){
+        document.getElementById("ticketNrCheck").innerText = "Number of tickets is invalid or not a whole number";
         document.getElementById("ticketNr").value = "0";
         valid = false;
     }
 
-    if (fName === ""){
+    if (!fName.match(namePattern)){
         document.getElementById("fNameCheck").innerText = "First name cannot be empty";
         document.getElementById("fName").value = "";
         valid = false;
     }
 
-    if (lName === ""){
+    if (!lName.match(namePattern)){
         document.getElementById("lNameCheck").innerText = "Last name cannot be empty";
         document.getElementById("lName").value = "";
         valid = false;
     }
 
-    if (phoneNr === ""){
+    if (!phoneNr.match(phonePattern)){
         document.getElementById("phoneNrCheck").innerText = "Phone number cannot be empty";
         document.getElementById("phoneNr").value = "";
         valid = false;
     }
-    if (email === "" || !email.includes("@")){
+    if (!email.match(emailPattern)){
         document.getElementById("emailCheck").innerText = "Email cannot be empty and/or are not valid";
         document.getElementById("email").value = "";
         valid = false;
