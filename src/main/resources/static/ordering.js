@@ -14,7 +14,7 @@ function buyTicket(){
 
     /*Regex consts. patterns gotten from this youtube video by Net Ninja
     https://www.youtube.com/watch?v=QxjAOSUQjP0
-    If you wanted a more comprehensive pattern you could use this one regexr.com/2rhq7 from the
+    If you wanted a more comprehensive email pattern you could use this one regexr.com/2rhq7 from the
     community user Tripleaxis
     */
     const namePattern = /^[a-z]+$/g
